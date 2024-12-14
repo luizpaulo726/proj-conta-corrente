@@ -92,7 +92,7 @@ DB_PORT=3306
 DB_DATABASE=corrente_conta
 DB_USERNAME=root
 DB_PASSWORD=Blue@2021
-
+```
 
 ### Exemplo de Requisições JSON no Postman
 **Criar uma conta corrente:**

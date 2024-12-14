@@ -70,6 +70,14 @@ DB_USERNAME=root
 DB_PASSWORD=Blue@2021
 APP_KEY=base64:HUHQFXhWDHsJDh6M+CFE7ChA7DqBv74KFWssXKtQ6AA= (substitua pela chave gerada)
 ```
+### Comandos de Teste
+Para rodar os testes no terminal dentro do container:
+
+```bash
+docker exec -it app-laravel bash
+php artisan test
+```
+
 ### 10.1 Configurar o Ambiente no `.env`
 Adicione os dados de configuração no arquivo `.env`:
 
@@ -81,13 +89,6 @@ DB_DATABASE=corrente_conta
 DB_USERNAME=root
 DB_PASSWORD=Blue@2021
 
-### Comandos de Teste
-Para rodar os testes no terminal dentro do container:
-
-```bash
-docker exec -it app-laravel bash
-php artisan test
-```
 
 ### Exemplo de Requisições JSON no Postman
 **Criar uma conta corrente:**

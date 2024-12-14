@@ -38,7 +38,8 @@ Isso abrirá um terminal dentro do container.
 Dentro do container, instale todas as dependências do projeto:
 
 ```bash
-composer install
+composer install, depois disso, digite chmod -R 777 /var/www/html/storage para dar permissão para a pasta storage do projeto.
+
 ```
 ### 7. Configurar o Ambiente
 Copie os arquivos de configuração para o ambiente padrão:

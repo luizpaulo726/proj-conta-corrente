@@ -71,6 +71,16 @@ DB_USERNAME=root
 DB_PASSWORD=Blue@2021
 APP_KEY=base64:HUHQFXhWDHsJDh6M+CFE7ChA7DqBv74KFWssXKtQ6AA= (substitua pela chave gerada)
 ```
+### 10.1 Configurar o Ambiente no `.env`
+Adicione os dados de configuração no arquivo `.env`:
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=corrente_conta
+DB_USERNAME=root
+DB_PASSWORD=Blue@2021
 
 ### Comandos de Teste
 Para rodar os testes no terminal dentro do container:

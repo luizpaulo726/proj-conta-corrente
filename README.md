@@ -45,7 +45,6 @@ Copie os arquivos de configuração para o ambiente padrão:
 
 ```bash
 cp .env.example .env
-cp .env.example .env.testing
 ```
 ### 8. Gerar a Chave de Aplicação
 Em seguida, gere a chave de aplicação do Laravel:
@@ -60,7 +59,7 @@ Com o ambiente configurado, acesse a aplicação no navegador através da URL:
 http://localhost:8080
 ```
 ### 10. Configurar o Ambiente no `.env.testing`
-Adicione os dados de configuração no arquivo `.env.testing`:
+Substitua os dados de configuração no arquivo  `.env.testing`:
 
 ```bash
 DB_CONNECTION=mysql

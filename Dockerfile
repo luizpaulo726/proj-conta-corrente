@@ -1,4 +1,3 @@
-# Use a imagem oficial do PHP 8.2 com Apache
 FROM php:8.2-apache
 
 # Instale as extensões necessárias do PHP
@@ -19,8 +18,13 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 # Ative o módulo de reescrita do Apache
 RUN a2enmod rewrite
 
-# Instale as dependências do Composer
-RUN composer install
+# Instale dependências adicionais e execute o script de permissões
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    zip \
+    curl \
+    && bash setup-permissions.sh
 
 # Exponha a porta 80
 EXPOSE 80

@@ -1,80 +1,66 @@
-# Projeto Conta Corrente
 
-## Passo a Passo para Rodar o Projeto
+# Passo a Passo para Rodar o Projeto Conta Corrente
 
-### 1. Clonar o Projeto
-Para começar, clone o repositório do projeto para sua máquina local:
+### 1. Clonar o Repositório do Projeto
+Comece clonando o repositório para a sua máquina local com o comando abaixo:
 
 ```bash
 git clone <URL_DO_REPOSITORIO>
 ```
-
 ### 2. Entrar no Diretório do Projeto
-Entre no diretório do projeto:
+Acesse o diretório do projeto que você acabou de clonar:
 
 ```bash
 cd <NOME_DO_DIRETORIO>
 ```
-
 ### 3. Iniciar o Docker Compose
-Para rodar o ambiente de containers do Docker, execute o seguinte comando:
+Execute o comando a seguir para iniciar os containers necessários:
 
 ```bash
 docker-compose up -d
 ```
-
-Este comando vai iniciar os containers necessários para rodar o projeto.
-
+Esse comando iniciará todos os containers que o projeto requer.
 ### 4. Verificar se os Containers Estão Rodando
-Após o Docker Compose iniciar os containers, verifique se tudo está funcionando corretamente com o comando:
+Para garantir que os containers estão funcionando, execute:
 
 ```bash
 docker ps
 ```
-
-Isso irá listar os containers em execução. Localize o container com o nome `app-laravel` e copie o ID correspondente.
-
-### 5. Acessar o Container
-Agora, acesse o container do `app-laravel` com o comando:
+Procure pelo container `app-laravel` e copie o seu ID.
+### 5. Acessar o Container do Laravel
+Com o ID do container em mãos, acesse o container do Laravel com:
 
 ```bash
 docker exec -it <ID_COPIADO> bash
 ```
-
 Isso abrirá um terminal dentro do container.
-
-### 6. Instalar as Dependências
-Dentro do container, execute o comando para instalar as dependências do projeto:
+### 6. Instalar Dependências do Projeto
+Dentro do container, instale todas as dependências do projeto:
 
 ```bash
 composer install
 ```
-
 ### 7. Configurar o Ambiente
-Copie o arquivo de exemplo `.env` para a configuração padrão do ambiente:
+Copie os arquivos de configuração para o ambiente padrão:
 
 ```bash
 cp .env.example .env
 cp .env.example .env.testing
 ```
-
 ### 8. Gerar a Chave de Aplicação
-Agora, gere a chave de aplicação para o Laravel:
+Em seguida, gere a chave de aplicação do Laravel:
 
 ```bash
 php artisan key:generate
 ```
-
 ### 9. Acessar o Projeto
-Após os passos acima, o ambiente está configurado. Agora, abra o navegador e acesse a seguinte URL para testar a API:
+Com o ambiente configurado, acesse a aplicação no navegador através da URL:
 
 ```
 http://localhost:8080
 ```
-
-### 10. Testar a Aplicação
-
-Adicionar os dados de conexão para o `.env.testing`:
+### 10. Configurar o Ambiente no `.env.testing`
+Adicione os dados de configuração no arquivo `.env.testing`:
 
 ```bash
 DB_CONNECTION=mysql
@@ -83,42 +69,33 @@ DB_PORT=3306
 DB_DATABASE=teste_corrente_conta
 DB_USERNAME=root
 DB_PASSWORD=Blue@2021
-APP_KEY=base64:HUHQFXhWDHsJDh6M+CFE7ChA7DqBv74KFWssXKtQ6AA= ( chave gerada)
-
-pegue a chave que foi gerada no env e cole a mesma dentro do .env.testing
-
+APP_KEY=base64:HUHQFXhWDHsJDh6M+CFE7ChA7DqBv74KFWssXKtQ6AA= (substitua pela chave gerada)
 ```
 
-(trocar pelos dados corretos que você gerou)
+### Comandos de Teste
+Para rodar os testes no terminal dentro do container:
 
-```bash
-APP_KEY=base64:HUHQFXhWDHsJDh6M+CFE7ChA7DqBv74KFWssXKtQ6AA=
-```
-
-Para rodar os testes, no terminal do Docker, execute:
 ```bash
 docker exec -it app-laravel bash
-```
 php artisan test
 ```
 
-### JSON Exemplo - Testado no Postman
-
-**Criar conta:**
+### Exemplo de Requisições JSON no Postman
+**Criar uma conta corrente:**
 
 ```
-http://localhost:8080/api/contas
+POST /api/contas
 {
-    "numero": "0123456", 
+    "numero": "0123456",
     "saldo": 0,
     "limite_credito": 500.00
 }
 ```
 
-**Depositar em conta:**
+**Depositar em uma conta:**
 
 ```
-http://localhost:8080/api/contas/123456789/depositar
+POST /api/contas/123456789/depositar
 {
     "valor": 70
 }
@@ -127,17 +104,16 @@ http://localhost:8080/api/contas/123456789/depositar
 **Sacar da conta:**
 
 ```
-http://localhost:8080/api/contas/123456789/sacar
+POST /api/contas/123456789/sacar
 {
     "valor": 70
 }
 ```
 
-**Transferir entre contas:**
+**Transferência entre contas:**
 
 ```
 POST /api/transacoes/transferir
-
 {
     "numeroContaOrigem": "12345",
     "numeroContaDestino": "67890",
@@ -149,7 +125,7 @@ POST /api/transacoes/transferir
 **Processar lote de transações:**
 
 ```
-http://localhost:8080/api/contas/processar-lote
+POST /api/contas/processar-lote
 {
     "transacoes": [
         {
@@ -181,5 +157,3 @@ http://localhost:8080/api/contas/processar-lote
     ]
 }
 ```
-
----

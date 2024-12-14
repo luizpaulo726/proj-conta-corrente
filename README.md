@@ -55,6 +55,7 @@ Copie o arquivo de exemplo `.env` para a configuração padrão do ambiente:
 
 ```bash
 cp .env.example .env
+cp .env.example .env.testing
 ```
 
 ### 8. Gerar a Chave de Aplicação
@@ -68,12 +69,12 @@ php artisan key:generate
 Após os passos acima, o ambiente está configurado. Agora, abra o navegador e acesse a seguinte URL para testar a API:
 
 ```
-http://localhost:8080/api/contas
+http://localhost:8080
 ```
 
 ### 10. Testar a Aplicação
 
-Adicionar os passos para o `.env.testing`:
+Adicionar os dados de conexão para o `.env.testing`:
 
 ```bash
 DB_CONNECTION=mysql
@@ -82,6 +83,10 @@ DB_PORT=3306
 DB_DATABASE=teste_corrente_conta
 DB_USERNAME=root
 DB_PASSWORD=Blue@2021
+APP_KEY=base64:HUHQFXhWDHsJDh6M+CFE7ChA7DqBv74KFWssXKtQ6AA= ( chave gerada)
+
+pegue a chave que foi gerada no env e cole a mesma dentro do .env.testing
+
 ```
 
 (trocar pelos dados corretos que você gerou)
@@ -91,8 +96,9 @@ APP_KEY=base64:HUHQFXhWDHsJDh6M+CFE7ChA7DqBv74KFWssXKtQ6AA=
 ```
 
 Para rodar os testes, no terminal do Docker, execute:
-
 ```bash
+docker exec -it app-laravel bash
+```
 php artisan test
 ```
 

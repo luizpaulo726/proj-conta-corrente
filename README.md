@@ -171,3 +171,4 @@ POST /api/contas/processar-lote
     ]
 }
 ```
+Para visualizar os dados acesso o phpmyadmin http://localhost:8081/

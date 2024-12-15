@@ -63,17 +63,8 @@ Com o ambiente configurado, acesse a aplicação no navegador através da URL:
 http://localhost:8080
 ```
 ### 10. Configurar o Ambiente no `.env.testing`
-Substitua os dados de configuração no arquivo  `.env.testing`:
+Copie o valor da chave APP_KEY do arquivo .env e substitua o valor da chave APP_KEY no arquivo .env.testing.
 
-```bash
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=teste_corrente_conta
-DB_USERNAME=root
-DB_PASSWORD=Blue@2021
-APP_KEY=base64:HUHQFXhWDHsJDh6M+CFE7ChA7DqBv74KFWssXKtQ6AA= (substitua pela chave gerada)
-```
 ### Comandos de Teste
 Para rodar os testes no terminal dentro do container:
 

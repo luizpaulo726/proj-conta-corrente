@@ -27,9 +27,6 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Ajuste de permissões
-RUN chmod -R 777 /var/www/html/storage \
-
 # Exponha a porta 80
 EXPOSE 80
 

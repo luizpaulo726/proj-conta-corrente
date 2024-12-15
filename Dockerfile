@@ -24,6 +24,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     zip \
     curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Ajuste de permissões
 RUN chmod -R 777 /var/www/html/storage \
